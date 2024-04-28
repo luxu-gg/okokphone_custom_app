@@ -3,9 +3,6 @@
  * It also contains okokPhone specific functions
  */
 
-const resourceName = "custom_app";
-const appName = "custom_app";
-
 /**
  * Send Event to NUI
  * @template T
@@ -15,16 +12,19 @@ const appName = "custom_app";
  */
 async function fetchNui(eventName, data = {}) {
   try {
-    const result = await fetch(`https://${resourceName}/${eventName}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-      },
-      body: JSON.stringify(data),
-    });
+    const result = await fetch(
+      `https://${document.okokPhone.resourceName}/${eventName}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify(data),
+      }
+    );
     return await result.json();
   } catch (error) {
-    console.error(`Error fetching ${eventName}\n`, error);
+    console.error(`Error calling ${eventName}\n`, error);
     return null;
   }
 }
@@ -41,7 +41,7 @@ async function fetchNui(eventName, data = {}) {
  */
 function notifyIsland(notification) {
   if (!notification.app && !notification.icon) {
-    notification.app = appName;
+    notification.app = document.okokPhone.appId;
   }
-  document.notifyIsland(notification);
+  document.okokPhone.notifyIsland(notification);
 }
