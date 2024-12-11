@@ -6,7 +6,6 @@ At this moment, it doesn't contain all the functions, this is a work in progress
 
 **Todo List**
 
-- [ ] React Template
 - [ ] Add Remaining Functions
 
 ## Workflow
@@ -21,7 +20,10 @@ The Document Variable will be injected with a few properties.
 console.log(document.okokPhone); // See all the injected properties
 
 document.okokPhone.appId; // Your app's id, defined in init.lua
-document.okokPhone.resourceName; // An alternative to window.GetParentResourceName() since it doesn't exist inside the app container
+document.okokPhone.resourceName; // Alternative to window.GetParentResourceName(), use what you want
+
+// Since v0.2.4
+window.GetParentResourceName(); // Is now available inside the app container
 
 // Used in utils.js
 // Calling these functions directly is not recommended
