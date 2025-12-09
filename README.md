@@ -17,21 +17,83 @@ These templates are built in a way that allows you to hot reload your app withou
 The Document Variable will be injected with a few properties.
 
 ```js
-console.log(document.okokPhone); // See all the injected properties
+console.log(window.okokPhone); // See all the injected properties
 
-document.okokPhone.appId; // Your app's id, defined in init.lua
-document.okokPhone.resourceName; // Alternative to window.GetParentResourceName(), use what you want
+window.okokPhone.appId; // Your app's id, defined in init.lua
+window.okokPhone.resourceName; // Alternative to window.GetParentResourceName(), use what you want
 
 // Since v0.2.4
 window.GetParentResourceName(); // Is now available inside the app container
 
-// Used in utils.js
-// Calling these functions directly is not recommended
-// Use the wrapped functions inside utils.js
-document.okokPhone.notifyIsland(data);
+// Example: Check if dark mode is enabled
+const isDark = window.okokPhone.isDarkMode();
+console.log("Is dark mode enabled?", isDark);
+
+// Since v1.0.1
+
+// Example: Access phoneData from the injected object
+const myPhoneData = window.okokPhone.phoneData;
+/*
+  myPhoneData: {
+    imei: string;
+    phoneNumber: string;
+    contacts: Contact[];
+    email: string | undefined;
+    ...
+  }
+*/
+
+// Example: Use openGallery to select an image or video
+window.okokPhone.openGallery((media) => {
+  if (media) {
+    // media: GalleryMedia
+    console.log("Selected media:", media.src);
+    if (media.type === "image") {
+      // Handle image
+    } else if (media.type === "video") {
+      // Handle video
+    }
+  } else {
+    console.log("User cancelled gallery");
+  }
+}, "images"); // or "videos"
+
+// Example: Call a number
+window.okokPhone.callNumber("123-456-7890");
+
+// Example: Call a service by job name
+window.okokPhone.callService("ambulance");
+
+// Example: Send a Dynamic Island Notification
+window.okokPhone.notifyIsland({
+  title: "New Message",
+  text: "You have a new message!",
+  app: "messages",
+  duration: 3000,
+});
+
+// Example: Disable controls
+window.okokPhone.disableControls(true); // disables controls
+window.okokPhone.disableControls(false); // enables controls
+
+// Example: Use Contact type
+/** @typedef {import('./templates/types').Contact} Contact */
+
+/**
+ * @type {Contact}
+ */
+const exampleContact = {
+  name: "Jane Doe",
+  phoneNumber: "987-654-3210",
+  company: "Acme Corp.",
+  email: "jane@example.com",
+  avatar: "/avatars/jane.png",
+  favorite: true,
+  timestamp: Date.now(),
+};
 ```
 
-New Events
+### Events
 
 ```js
 // Handle Dark Mode Toggle
