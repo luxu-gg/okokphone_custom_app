@@ -4,10 +4,6 @@ Welcome, here you can find templates that you can use to build your Custom Apps 
 
 At this moment, it doesn't contain all the functions, this is a work in progress, so it's a good idea to keep an eye on it 🤓
 
-**Todo List**
-
-- [ ] Add Remaining Functions
-
 ## Workflow
 
 Developing custom apps can be a smooth process.
