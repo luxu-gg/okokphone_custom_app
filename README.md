@@ -68,6 +68,27 @@ window.okokPhone.notifyIsland({
   duration: 3000,
 });
 
+// Upload media via api configured in the phone, returns data if succesful.
+window.okokPhone.uploadMedia(type: 'image' | 'video', blob: Blob):Promise<{
+  src: string;
+  timestamp: string;
+  type: 'image' | 'video';
+  id: string;
+  width: number;
+  height: number;
+  }>
+
+// Save media url to the gallery
+ window.okokPhone.saveToGallery(url: string):Promise<boolean>
+ 
+ 
+ //Example usage
+ const result = await window.okokPhone.uploadMedia("image", blob)
+ if (result){
+   await window.okokPhone.saveToGallery(result.src)
+ }
+ 
+
 // Example: Disable controls
 window.okokPhone.disableControls(true); // disables controls
 window.okokPhone.disableControls(false); // enables controls
