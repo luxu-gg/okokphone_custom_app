@@ -80,14 +80,14 @@ window.okokPhone.uploadMedia(type: 'image' | 'video', blob: Blob):Promise<{
 
 // Save media url to the gallery
  window.okokPhone.saveToGallery(url: string):Promise<boolean>
- 
- 
+
+
  //Example usage
  const result = await window.okokPhone.uploadMedia("image", blob)
  if (result){
    await window.okokPhone.saveToGallery(result.src)
  }
- 
+
 
 // Example: Disable controls
 window.okokPhone.disableControls(true); // disables controls
@@ -115,16 +115,16 @@ const exampleContact = {
 ```js
 // Handle Dark Mode Toggle
 document.addEventListener("darkMode", (e) => {
-  const isDark = e.detail;
-  if (isDark) {
-    console.log("Dark Mode is enabled");
-  } else {
-    console.log("Dark Mode is disabled");
-  }
+    const isDark = e.detail;
+    if (isDark) {
+        console.log("Dark Mode is enabled");
+    } else {
+        console.log("Dark Mode is disabled");
+    }
 });
 
 document.addEventListener("loadedPhoneFunctions", () => {
-  console.log("props", document.okokPhone);
+    console.log("props", document.okokPhone);
 });
 ```
 
@@ -161,6 +161,6 @@ You can copy the functions and use it however you like, I added JSDoc types so y
 
 It contains **tailwind cdn** and a list of functions found on `web/assets/utils.js`.
 
-You can just open `app.html` in your browser and start developing your app inside the development container like any other project.
+You can just open `index.html` in your browser and start developing your app inside the development container like any other project.
 
 Please don't delete the `style.css` if you don't know what you are doing. Read the comments.

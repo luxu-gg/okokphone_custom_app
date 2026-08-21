@@ -19,7 +19,7 @@ server_scripts {
       'server/server.lua'
 }
 
-ui_page 'web/app.html'
+ui_page 'web/index.html'
 
 files {
       'web/**/*'
